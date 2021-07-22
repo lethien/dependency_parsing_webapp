@@ -11,8 +11,8 @@ import os
 from vncorenlp import VnCoreNLP
 import phonlp
 
-vncorenlp_model = VnCoreNLP(os.path.join(settings.BASE_DIR, './dependency_api/vncorenlp/VnCoreNLP-1.1.1.jar'))
-phonlp_model = phonlp.load(save_dir=os.path.join(settings.BASE_DIR, './dependency_api/pretrained_phonlp'))
+vncorenlp_model = VnCoreNLP(os.path.join(settings.BASE_DIR, 'dependency_api/vncorenlp/VnCoreNLP-1.1.1.jar'))
+phonlp_model = phonlp.load(save_dir=os.path.join(settings.BASE_DIR, 'dependency_api/pretrained_phonlp'))
 
 def home_page(request):
     return render(request, 'vue_templates/home_page.html')

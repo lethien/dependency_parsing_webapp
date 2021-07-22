@@ -30,12 +30,12 @@ Students:
 
 - Download and setup files for models with the following commands: 
 	```
-	python setup-models.py	
+	python setup_models.py	
 	```
 
 - (Optional if you want to make change in VueJs) Install npm packages and build static files as follows:  
 	```
-	cd ./webapp/frontend_code
+	cd webapp/frontend_code
 	npm install
 	yarn build
 	cd ../..
@@ -43,7 +43,7 @@ Students:
 
 - Setup Django for the first time:
 	```
-	cd ./webapp
+	cd webapp
 	python manage.py makemigrations
 	python manage.py collectstatic
 	cd ..
@@ -52,6 +52,6 @@ Students:
 ## Start the web application
 
 ```
-cd ./webapp
+cd webapp
 python manage.py runserver
 ```

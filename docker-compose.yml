@@ -1,0 +1,15 @@
+version: "3.9"
+   
+services:
+  web:
+    build: .
+    command: >
+      sh -c "python3 setup_models.py &&
+             cd ./webapp/ &&
+             python3 manage.py collectstatic --noinput &&
+             python3 manage.py migrate &&
+             python3 manage.py runserver 8000"
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
