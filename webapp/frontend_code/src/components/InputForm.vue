@@ -8,7 +8,7 @@
             <div class="form-group">
               <textarea class="form-control" v-model="form.sentence" id="sentenceinput" 
                 placeholder="Enter a Vietnamese sentence to parse" aria-describedby="Enter a Vietnamese sentence to parse" 
-                rows="5"/>        
+                rows="6"/>        
             </div>
           </div>
 
@@ -16,33 +16,23 @@
             <div class="form-group">
               <p >Model to use:</p>
               <div class="row">
-                <div class="col-sm">
+                <div class="col-sm-12">
                   <input type="radio" class="form-check-input" id="parsemodel_vncorenlp" name="parsemodel" value="vncorenlp" v-model="form.parsemodel" checked/>
                   <label class="form-check-label" for="parsemodel_vncorenlp">VNCoreNLP (Lightweight)</label>
                 </div>
-                <div class="col-sm">
+                <div class="col-sm-12">
                   <input type="radio" class="form-check-input" id="parsemodel_phonlp" name="parsemodel" value="phonlp" v-model="form.parsemodel" />
-                  <label class="form-check-label" for="parsemodel_vncorenlp">PhoNLP (SOTA)</label>
+                  <label class="form-check-label" for="parsemodel_phonlp">PhoNLP (SOTA)</label>
+                </div>
+                <div class="col-sm-12">
+                  <input type="radio" class="form-check-input" id="parsemodel_jptdp" name="parsemodel" value="jptdp" v-model="form.parsemodel" />
+                  <label class="form-check-label" for="parsemodel_jptdp">jPTDP (Lightweight)</label>
                 </div>
               </div>
-            </div>
-
-            <div class="form-group">
-              <p>Preprocess with Word Segmentation (only for PhoNLP):</p>
-              <div class="row">
-                <div class="col-sm">
-                  <input type="radio" class="form-check-input" id="wordseg_yes" name="needwordseg" value="yes" v-model="form.needwordseg" checked/>
-                  <label class="form-check-label" for="wordseg_yes">Yes</label>
-                </div>
-                <div class="col-sm">
-                  <input type="radio" class="form-check-input" id="wordseg_no" name="needwordseg" value="no" v-model="form.needwordseg" />
-                  <label class="form-check-label" for="wordseg_no">No</label>
-                </div>
-              </div>
-            </div>
+            </div>            
           </div>
         </div>      
-        <div class="form-group button-group">
+        <div class="form-group button-group">          
           <button class="btn btn-primary">Parse</button>
         </div>
       </fieldset>
@@ -60,8 +50,7 @@ export default {
     return {
           form: {
               sentence: "",
-              parsemodel: "vncorenlp",
-              needwordseg: "yes"
+              parsemodel: "vncorenlp"
           },
           isloading: false,
           error: ""
@@ -77,16 +66,17 @@ export default {
             url: "/api/dependency_parse", 
             data: { 
               sentence: currentObject.form.sentence,
-              parsemodel: currentObject.form.parsemodel,
-              needwordseg: currentObject.form.needwordseg 
+              parsemodel: currentObject.form.parsemodel
             }, 
             headers: { 'xsrfCookieName': 'csrftoken', 'xsrfHeaderName': 'X-CSRFToken'}, 
             withCredentials: true } 
           this.axios(options).then(function (response) {
+              currentObject.error = "";
               currentObject.$emit('parsed', response.data);
           })
-          .catch(function (error) {
+          .catch(function (error) {              
               currentObject.error = error;
+              currentObject.$emit('parsed', "");
           })
           .finally(() => {
               currentObject.isloading = false;
@@ -128,5 +118,8 @@ p {
   z-index:10000000;
   opacity: 0.4;
   filter: alpha(opacity=40);
+}
+.form-check-input {
+  margin-right: 0.5em;
 }
 </style>

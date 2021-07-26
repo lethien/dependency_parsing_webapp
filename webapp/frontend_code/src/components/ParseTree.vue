@@ -1,5 +1,4 @@
-<template>
-  <div class="container" v-if="parsed_info">  
+<template> 
     <div class="margin-bottom" :key="parseTreeNum"> 
         <div>
             <h3>Dependency Parse Tree:</h3> 
@@ -21,7 +20,6 @@
             </vue-tree>
         </div>
     </div>
-  </div>
 </template>
 
 <script>
