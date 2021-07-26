@@ -33,15 +33,30 @@ Students:
 	python setup_models.py	
 	```
 
-- (Optional if you want to make change in VueJs) Install npm packages and build static files as follows:  
+- (Optional) Re-train jPTDP model:
 	```
-	cd webapp/frontend_code
-	npm install
-	yarn build
+	cd jPTDP/jPTDP
+	python jPTDP.py --dynet-seed 123456789 --dynet-mem 1000 --epochs 30 --lstmdims 128 --lstmlayers 2 --hidden 100 --wembedding 100 --cembedding 50 --pembedding 100  --outdir model/ --train data/train.txt --dev data/dev.txt
 	cd ../..
 	```
 
-- Setup Django for the first time:
+- Setup jPTDP:
+	```
+	cd jPTDP
+	pip install .
+	cd ..
+	```
+
+- Setup VueJs, install npm packages and build static files as follows:  
+	```
+	cd webapp/frontend_code
+	npm install
+	yarn serve
+	Ctrl-C
+	cd ../..
+	```
+
+- Setup Django:
 	```
 	cd webapp
 	python manage.py makemigrations
