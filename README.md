@@ -13,6 +13,7 @@ Students:
 
 - SOTA: PhoNLP (https://github.com/VinAIResearch/PhoNLP)  
 - Lightweight: VnCoreNLP (https://github.com/vncorenlp/VnCoreNLP)
+- Lightweight: jPTDP (https://github.com/datquocnguyen/jPTDP)
 
 ## The Web Application
 
@@ -22,8 +23,9 @@ Students:
 - Vue Tree Chart for Dependency Tree graph (https://github.com/ssthouse/vue-tree-chart)
 
 ## Installation
-  
-- Python packages using `pip` as follows:  
+This project requires Python 3.6+ and Java 1.8+.
+
+- Install Python packages using `pip` as follows:  
 	```
 	pip install -r requirements.txt
 	```
@@ -35,9 +37,9 @@ Students:
 
 - (Optional) Re-train jPTDP model:
 	```
-	cd jPTDP/jPTDP
-	python jPTDP.py --dynet-seed 123456789 --dynet-mem 1000 --epochs 30 --lstmdims 128 --lstmlayers 2 --hidden 100 --wembedding 100 --cembedding 50 --pembedding 100  --outdir model/ --train data/train.txt --dev data/dev.txt
-	cd ../..
+	cd jPTDP
+	python jPTDPScript.py --dynet-seed 123456789 --dynet-mem 1000 --epochs 30 --lstmdims 128 --lstmlayers 2 --hidden 100 --wembedding 100 --cembedding 50 --pembedding 100  --outdir jPTDP/model/ --train jPTDP/data/train.txt --dev jPTDP/data/dev.txt
+	cd ..
 	```
 
 - Setup jPTDP:
@@ -52,7 +54,7 @@ Students:
 	cd webapp/frontend_code
 	npm install
 	yarn serve
-	Ctrl-C
+	exit with Ctrl-C
 	cd ../..
 	```
 
