@@ -1,5 +1,5 @@
 # Dependency Parsing Web Application
-## Show-casing two dependency parsing models for Vietnamese language
+## Show-casing three dependency parsing models for Vietnamese language
 
 This is the final project for Natural Language Processing course, Master program in Data Science, JVN Institute, 2021.
 
@@ -9,7 +9,7 @@ Students:
 - Le Thien Toan - JVN Institute, Vietnam National University of HCM City  
 - Le Thi Thuy Trang - JVN Institute, Vietnam National University of HCM City
 
-## The two models  
+## The three Vietnamese Dependency Parsing models  
 
 - SOTA: PhoNLP (https://github.com/VinAIResearch/PhoNLP)  
 - Lightweight: VnCoreNLP (https://github.com/vncorenlp/VnCoreNLP)
@@ -23,7 +23,7 @@ Students:
 - Vue Tree Chart for Dependency Tree graph (https://github.com/ssthouse/vue-tree-chart)
 
 ## Installation
-This project requires Python 3.6+ and Java 1.8+.
+This project requires Python 3.6+, Java 1.8+, Npm, and Yarn.
 
 - Install Python packages using `pip` as follows:  
 	```
@@ -61,7 +61,6 @@ This project requires Python 3.6+ and Java 1.8+.
 - Setup Django:
 	```
 	cd webapp
-	python manage.py makemigrations
 	python manage.py collectstatic
 	cd ..
 	```
